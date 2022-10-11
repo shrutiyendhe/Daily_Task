@@ -1,0 +1,103 @@
+/*
+Multilevel Inheritance:
+	WAP to create three class, one class implement the prime no process , 
+	second class implement the swapping of two no, 
+	third class implement the find out the average of student marks.
+*/
+
+package multi_level_inheri;
+import java.util.*;
+public class prime_no 
+{
+	public static void prime()
+	{
+		Scanner sc= new Scanner(System.in);
+		System.out.println("Enter The Number ");
+		int num = sc.nextInt(); 
+		int i,count=0;
+		for(i=2;i<num;i++)			  	//prime number is no divided by itself and 1 so start from 2
+		{
+			if(num%i==0)
+			{
+				count++;
+				break;
+			}
+		}
+		if(count==0)                       //check count is equal to 0 
+	           System.out.println(+num+" is a Prime Number.");                                                               
+	        else
+	           System.out.println(+num+" is not a Prime Number.");
+	}
+
+}
+
+-----------------------------------------------------------------------------------------------
+
+package multi_level_inheri;
+import java.util.*;
+public class swapp_no extends prime_no
+{
+	public static void swap()
+	{
+		int a,b,temp;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("enter numbers");
+		a=sc.nextInt();
+		b=sc.nextInt();
+		
+		System.out.println("before swap ");
+		System.out.println(a+ " is a");
+		System.out.println(b+ " is b");
+		temp=a;
+		a=b;
+		b=temp;
+		System.out.println("after swap ");
+		System.out.println(a+ " is a");
+		System.out.println(b+ " is b");
+	}
+}
+
+-----------------------------------------------------------------------------------------------------
+
+package multi_level_inheri;
+import java.util.*;
+public class stud extends swapp_no
+{
+	public static void stud_avg() 
+	{
+		int i;
+		int arr[] = new int[6];
+		
+		 //int[] arr=new int[n];
+		Scanner sc = new Scanner(System.in);
+		
+		//System.out.println("enter number of subjects");
+		//n=sc.nextInt();
+		for(i=0;i<6;i++)
+		{
+			System.out.println(" enter marks ");
+			arr[i]=sc.nextInt();
+		}
+		
+		float sum=0,avg;
+		for(i=0; i<6; i++)
+        {
+            sum = sum + arr[i];
+        }
+         avg= sum/6;
+         System.out.print("Average Marks = " +avg);
+	}
+	public static void main(String[] args)
+	{
+		System.out.println("primr_number");
+		prime();
+		
+		System.out.println("swapping_number");
+		swap();
+		
+		System.out.println("average of students marks");
+		stud_avg();
+			
+	}
+	
+}
