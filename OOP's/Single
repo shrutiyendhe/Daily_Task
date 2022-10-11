@@ -1,0 +1,65 @@
+/*
+single inheritance:
+	WAP to create two class one class do the process of fibonacci series and 
+	in second class find out the greater between two no . 
+	from second class display both the operation.
+*/
+
+package single_inheri;
+
+import java.util.*;
+public class Inh1 
+{
+	public static void fibo()
+	{
+		int n1=0,n2=1,n3,i,c;
+		Scanner sc= new Scanner(System.in);
+		System.out.print("enter number : ");
+		c=sc.nextInt();
+		
+		System.out.print(n1+"\t"+n2);
+		for(i=2;i<c;++i)
+		{
+			n3=n1+n2;
+			System.out.print("\t"+n3);
+			n1=n2;
+			n2=n3;
+		}
+	}
+	
+	public static void great_no()
+	{
+		int num1,num2;
+		Scanner sc= new Scanner(System.in);
+		System.out.println("enter two numbers:");
+		num1=sc.nextInt();
+		num2=sc.nextInt();
+		
+		if(num1>num2)
+		{
+			System.out.println(num1+ " is greater that is num1");
+		}
+		else
+		{
+			System.out.println(num2+ " is greater that is num2");
+		}
+	}
+
+}
+
+---------------------------------------------------------------------
+
+package single_inheri;
+import java.util.*;
+public class output_1 extends Inh1 {
+
+	public static void main(String[] args) {
+
+		System.out.println("..... fibonacci series .....");
+		fibo();
+		
+		System.out.println("\n ..... greater number .....");
+		great_no();
+	}
+
+}
