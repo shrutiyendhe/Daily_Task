@@ -1,0 +1,110 @@
+/*
+ Encapsulation :
+ 	WAP to accept 
+ 		bank name
+		user name
+		user password
+		process:credi/debit
+	process will be depend upon the user after that display the details with final balance amount
+*/
+
+package encapsulation;
+import java.util.*;
+public class Bank_process 
+{
+	private int pass=2468;
+	private int ac_bal=1500;
+	
+	//in encapsulation getter setter methods are used to access private variables in other class
+	// users password or pin
+	public int getPass() 
+	{
+		return pass;
+	}
+	public void setPass(int ps) 
+	{
+		this.pass = ps;
+	}
+	// amount credit process
+	public int getAc_balcr() {
+		return ac_bal;
+	}
+	public void setAc_balcr(int bl) {
+		this.ac_bal += bl;
+	}
+	// amount debit  process
+	public int getAc_baldb() {
+		return ac_bal;
+	}
+	public void setAc_baldb(int bl) {
+		this.ac_bal -= bl;
+	}
+}
+--------------------------------------------------------------------------------------------------------------------
+package encapsulation;
+import java.util.*;
+
+public class User_process extends Bank_process{
+
+	public static void main(String[] args) 
+	{
+		User_process ob=new User_process();
+		ob.process();
+	}
+	public void process() 
+	{
+		Scanner sc = new Scanner(System.in);
+		String u_id,bankname;
+		char ans;
+		int u_pass,u_bal,ch,balance = 0;
+		Bank_process obj = new Bank_process();
+		System.out.println("Enter Bank name ");
+		bankname=sc.next();
+		System.out.println("Enter User name ");
+		u_id=sc.next();
+		System.out.println("Enter Account Password");
+		u_pass=sc.nextInt();
+		obj.getPass();
+		//if block to check password
+	if(obj.getPass()==u_pass) {
+		do{
+		System.out.println("Do you want to\n1. Credit amount \n2. Debit amount");
+		ch=sc.nextInt();
+		//switch case choice for credit or debit method
+		switch (ch) {
+		case 1:
+			System.out.println("Enter Amount to Credit");
+			balance=sc.nextInt();
+			obj.setAc_balcr(balance);
+			System.out.println("The Username is "+u_id);
+			System.out.println("The Bankname is "+bankname);
+			System.out.println("The Account balance is Rs."+obj.getAc_balcr());
+			break;
+		case 2:
+			System.out.println("Enter Amount to Debit");
+			balance=sc.nextInt();
+			obj.setAc_baldb(balance);
+			if (obj.getAc_baldb()>=0) {
+				System.out.println("The Username is "+u_id);
+				System.out.println("The Bankname is "+bankname);
+				System.out.println("The Account balance is Rs."+obj.getAc_baldb());
+			} else {
+				System.out.println("your Account doesn't have Sufficient amount to Withdraw");
+			}
+			
+			break;
+
+		default:
+			System.out.println("Enter Valid choice");
+			break;
+		}
+		System.out.println("Do you want to continue transaction? y/n");
+		ans=sc.next().charAt(0);
+	}
+	while(ans=='Y'||ans=='y');
+	}
+		else {
+		System.out.println("wrong Password entered! \n try again!");
+	}
+}		
+	}
