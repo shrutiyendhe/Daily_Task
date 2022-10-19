@@ -1,0 +1,37 @@
+/*
+ 	wap to find greater between two numbers and use GARBAGE COLLECTION concept
+*/
+
+package Garbage_coll;
+import java.util.Scanner;
+public class GC 
+{
+
+	public void finalize()	// perform cleanup processing
+	{
+		System.out.println("This is Garbage Collection METHOD");
+	}
+
+  public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		
+		Scanner s = new Scanner(System.in);
+		
+		System.out.println("enter two numbers : ");
+		int n1 = s.nextInt();
+		int n2 = s.nextInt();
+		
+		if(n1>n2)
+		{
+			System.out.println(n1+ " is greater ");
+		}
+		else
+			System.out.println(n2+ " is greater ");
+		
+		
+		GC obj=new GC();
+		obj=null;	//null the reference
+		System.gc();	//gc is garbage collector to perform cleanup processing
+	}
+}
