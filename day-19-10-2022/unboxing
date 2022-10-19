@@ -1,0 +1,32 @@
+/*
+	wap using unboxing concept to check if number is divisible by 3 or not
+*/
+
+package box_unbox;
+import java.util.*;
+public class unBoxing 
+{
+	static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args) 
+	{
+		unbox();
+	}
+	
+	//automatic conversion of primitive data types into its equivalent
+	// opposite operation is known as unboxing
+	
+	public static void unbox()
+	{
+		System.out.println("Enter number ");
+		Integer obj=sc.nextInt();
+		int num=obj;
+		if( num % 3 == 0)
+		{
+			System.out.println(num+" is divisible by 3");
+			System.out.println("The data inside your varianle NUM = " +num);
+		}
+		else
+			System.out.println(num+ " is NOT divisible by 3");		
+	}
+}
