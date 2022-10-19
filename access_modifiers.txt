@@ -1,0 +1,108 @@
+/*
+  use different access modifiers 
+*/
+
+package Access_modifier;
+
+import Abraction.Emp_info;
+
+public class Public_classA extends Emp_info
+{
+	////private
+	 private String strname;    
+	 
+	// getter method
+	    public String getName()
+	    {
+	        return this.strname;
+	    }
+	    // setter method
+	    public void setName(String name) 
+	    {
+	        this.strname= name;
+	    }
+	//public
+	public void msg()
+	{
+		System.out.println("Hello from class A of Public access modifier");
+	}  
+	//default
+	 void def()
+	 {System.out.println("Hello from default");
+	 }		
+}
+
+package Access_modifier;
+
+ class ProtectedclassA 
+{
+	 protected void display() 
+	    { 
+		 System.out.println("hiiii from Protected");
+	    }
+}
+
+//ProtectedclassB extends ProtectedclassA for Procted modifier
+package Access_modifier;
+
+public class ProtectedclassB extends ProtectedclassA 
+{
+}
+
+package Abraction;
+import java.util.Scanner;
+public class Emp_info implements Emp_interface
+{
+	@Override
+	public void method()
+	{
+		// TODO Auto-generated method stub
+		int emp_id,salary;
+		String department,designation,location;
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter employee_id:");
+		emp_id=sc.nextInt();
+		//System.out.println("enter Department:");
+		//department=sc.next();
+		//System.out.println("enter designation of emp:");
+		//designation=sc.next();
+		//System.out.println("enter current location of employee office:");
+		//location=sc.next();
+		System.out.println("enter salary of emp:");
+		salary=sc.nextInt();
+		System.out.println("employee_id = "+emp_id);
+		//System.out.println("Department of employee = "+department);
+		//System.out.println("Designation of employee = "+designation);
+		//System.out.println("current location of employee office= "+location);
+		System.out.println("salary of employee = "+salary);
+	}
+
+}
+
+package Access_modifier;
+
+import Abraction.Emp_info;
+
+
+public class Public_modifierB 
+{
+
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+		Public_classA obj = new Public_classA();
+		obj.msg();//public modifier
+		Public_classA obj1=new Public_classA();  		      		 
+		 // access the private variable using the getter and setter
+		        obj1.setName("hello from private");
+		        System.out.println(obj1.getName());
+		        //protected
+		        ProtectedclassB obj2 = new  ProtectedclassB();     //create object of class B   
+		        obj2.display();       //access class A protected method using obj2
+		        obj.def();				//default modifier
+		        //public class of emp_info extented to public class A
+		        Emp_info ob =new Emp_info();
+		        obj.method();
+		      
+	}
+}
