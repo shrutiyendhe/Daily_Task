@@ -1,0 +1,32 @@
+// WAP to display Fibonacci series by extending Thread Class
+
+package Threading;
+import java.util.Scanner;
+public class Fibonacci extends Thread 
+{
+	Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) 
+	{
+		Fibonacci ob=new Fibonacci();	//thread 1 process
+		ob.start(); // to start 1st process and call run method 
+		Fibonacci obj=new Fibonacci();	// thread 2 process
+		obj.start();  // to start 2nd process and call run method
+	}
+	
+	public void run() 
+	{
+		
+		int i, n,fdg,sdg = 0,res = 1;  //initialize 
+    
+    System.out.println("\n Enter Number for Fibonacci series : ");
+		n = sc.nextInt();
+    
+		for(i = 1; i <= n; i++)							
+        {
+            fdg = sdg;								//initialize 
+            sdg = res;
+            res = fdg + sdg;
+            System.out.print(" \t\n " +fdg);         // printing fibonacci series 
+        }
+	}
+}
