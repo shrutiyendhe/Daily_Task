@@ -1,0 +1,82 @@
+// WAP to Display Armstrong no from1 to 1000 , Prime NO from 1 to 100 using interface of multi threading(RUNNABLE)
+
+package Threading;
+import java.util.*;
+public class arms implements Runnable{
+	static Scanner sc = new Scanner(System.in); 
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		arms ob1 = new arms();
+		Thread t1 = new Thread(ob1);
+		t1.start();
+		
+		prime_num ob2 = new prime_num();
+		Thread t2 = new Thread(ob2);
+		t2.start();
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		int n, count = 0, a, b, c, sum = 0;
+        System.out.print("Armstrong numbers from 1 to 1000:");
+        for(int i = 1; i <= 1000; i++)
+        {
+            n = i;
+            while(n > 0)
+            {
+                b = n % 10;
+                sum = sum + (b * b * b);
+                n = n / 10;
+            }
+            if(sum == i)
+            {
+                System.out.print(i+" \n \t ");
+            }
+            sum = 0;
+        }
+	}
+
+}
+
+----------------------------------------------------------------------------------
+
+package Threading;
+import java.util.*;
+public class prime_num implements Runnable {
+static Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+  
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+		int i =0;
+	       int num =0;
+	       //Empty String
+	       String  primeNumbers = "";
+
+	       for (i = 1; i <= 100; i++)         
+	       { 		  	  
+	          int counter=0; 	  
+	          for(num =i; num>=1; num--)
+		  {
+	             if(i%num==0)
+		     {
+	 		counter = counter + 1;
+		     }
+		  }
+		  if (counter ==2)
+		  {
+		     //Appended the Prime number to the String
+		     primeNumbers = primeNumbers + i + " ";
+		  }	
+	       }	
+	       System.out.println("Prime numbers from 1 to 100 are :");
+	       System.out.println(primeNumbers);
+	}
+  
+}
